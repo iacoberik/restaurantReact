@@ -1,0 +1,19 @@
+{
+  "name": "namastereact",
+  "version": "1.0.0",
+  "description": "NamasteReact tutorial",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iacoberik/namasteReact.git"
+  },
+  "author": "Iacob Erik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iacoberik/namasteReact/issues"
+  },
+  "homepage": "https://github.com/iacoberik/namasteReact#readme"
+}
