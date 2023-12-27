@@ -1,7 +1,5 @@
 # Namaste react
 
-///
-
 # Parcel
 
 - Dev build
@@ -19,4 +17,4 @@
 - Diagnostic
 - Error Handling
 - HTTPs future
-- Tree Shaking
+- Tree Shaking - remove unused code

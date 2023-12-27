@@ -2,9 +2,11 @@
   "name": "namastereact",
   "version": "1.0.0",
   "description": "NamasteReact tutorial",
-  "main": "App.js",
+  "source": "index.html",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "browserslist": [
+    "last 10 versions"
+  ]
 }
