@@ -2955,7 +2955,7 @@ const parent = /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
     }, [
         /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
             id: "heading"
-        }, "I`m h1 tag"),
+        }, "I`m h1 tagggggg"),
         /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
             id: "heading-two"
         }, "I`m h2 tag")
