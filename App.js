@@ -1,72 +1,79 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+// Namaste react layout
+
+// Header
+// 	- Logo
+// 	- NavItems
+// Body
+// 	- Search Bar
+// 	- Restaurants Cotainer
+// 		- Restaurant Card
+// -img
+// -name of it - couisin - delivery time
+// Footer
+// 	-Copyright
+// 	-Links
+// 	-Address
+// 	-Contant
+
 //React Element => creating an object => On render() to the dom it becomes be HTML
 
-const heading = React.createElement(
-  "h1",
-  { className: "module_title", id: "heading" },
-  "Hello from React Create Element Object"
-);
-
-const headingVariable = (
-  <span>
-    <br></br>I am an H3 inside of an variale (React element)
-  </span>
-);
-
-const HeadingComponent = () => {
-  return <h1>Namaste from functional component, HeadingComponent!</h1>;
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="header-logo logo"
+          src="https://image.similarpng.com/very-thumbnail/2021/09/Good-food-logo-design-on-transparent-background-PNG.png"
+          alt="logo"
+        ></img>
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li className="nav-item_link">Home</li>
+          <li className="nav-item_link">About Us</li>
+          <li className="nav-item_link">Contact</li>
+          <li className="nav-item_link">Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
 };
 
-//JSX - JavaScript syntax - easier to create LIKE html syntax or XML - like inside of javascript - JSX IS NOT HTML IN JS  !!!
-//JSX is transpiled before it reaches the JS Engine (ES6) because Js do not understand JSX => PARCEL is responsabile to manage and use It with BABEL
-const JsxHeading = () => (
-  <h1 className="module_title" id="heading">
-    Namaste React using JSX
-  </h1>
-); //Creating an element Object with JSX insted of using core REACT -> that will be converted by BABEL to => React.createElement() => intaintJS OBJECT => that will be then be transformed with HTML using render()
+const RestaurantCard = () => {
+  return (
+    <div className="restaurant-card">
+      <img></img>
+      <div className="restaurant-details">
+        <h3 className="details-title">Pizza Hut</h3>
+        <p className="details-info">Estimating 40 mins</p>
+      </div>
+    </div>
+  );
+};
 
-const JsxSecondHeading = () => (
-  <div>
-    <HeadingComponent />
-    <JsxHeading />
-    <h2 className="module_subtitle" id="subtitle">
-      Author Iacob Erik-Andrei
-      {headingVariable}
-    </h2>
-  </div>
-);
-console.log(JsxSecondHeading, JsxHeading);
+const Body = () => {
+  return (
+    <div className="body-container">
+      <div className="search-container">Search</div>
+      <div className="restaurants-container">
+        <RestaurantCard />
+      </div>
+    </div>
+  );
+};
+
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// root.render(heading); //Reaplcing the root selector with the heading object
-
-root.render(<JsxSecondHeading></JsxSecondHeading>);
-
-//Assignment EP 3 - Laying the foundation
-
-// const headingEx = React.createElement("div", { className: "title" }, [
-//   React.createElement("h1", {}, "test"),
-//   React.createElement("h2", {}, "test"),
-//   React.createElement("h3", {}, "test"),
-// ]);
-
-// const headingEx = (
-//   <div className="title">
-//     <h1>Title 1</h1>
-//     <h2>Title 2</h2>
-//     <h3>Title 3</h3>
-//   </div>
-// );
-
-// const HeadingExComponent = () => (
-//   <div className="title">
-//     <h1>Title 1</h1>
-//     <h2>Title 2</h2>
-//     <h3>Title 3</h3>
-//   </div>
-// );
-
-// root.render(headingEx);
+root.render(<AppLayout />);
