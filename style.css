@@ -58,16 +58,16 @@ img.logo {
 }
 
 .restaurants-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(6, 1fr); */
     align-items: center;
     justify-content: center;
     gap: 20px;
     padding-top: 60px;
-
 }
 
-@media (max-width: 1440px) {
+/* @media (max-width: 1440px) {
     .restaurants-container {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -77,7 +77,7 @@ img.logo {
     .restaurants-container {
         grid-template-columns: 1fr
     }
-}
+} */
 
 /* .restaurant-card {
     aspect-ratio: 14 / 16;
