@@ -1405,7 +1405,6 @@ const RestaurantCard = (props) => {
     cloudinaryImageId: restImage,
     cuisines: cuisineName,
     avgRating,
-    id,
     sla: { slaString: deliveryTime },
   } = props.restOptions.info;
 
@@ -1422,12 +1421,11 @@ const RestaurantCard = (props) => {
   let cardStyle = {
     position: "relative",
     cursor: "pointer",
-    aspectRatio: 14 / 16,
+    aspectRatio: 12 / 16,
     borderRadius: "10px",
     flexDirection: "column",
-    height: "380px",
+    height: "400px",
     marginTop: "20px",
-    // padding: "10px 15px",
     transition: "all .2s ease-in-out",
     display: "flex",
     boxShadow: shadowBox,
@@ -1439,6 +1437,7 @@ const RestaurantCard = (props) => {
 
   let imgStyle = {
     height: "250px",
+    // aspectRatio: 14 / 16,
     width: "100%",
     objectFit: "cover",
     scale: imgScale,
@@ -1515,9 +1514,9 @@ const Body = () => {
     >
       <div className="search-container">Search...</div>
       <div className="restaurants-container" style={{ paddingBlock: "40px" }}>
-        {restaurantsApi.map((rest) => {
-          return <RestaurantCard restOptions={rest} />;
-        })}
+        {restaurantsApi.map((rest) => (
+          <RestaurantCard key={rest.info.id} restOptions={rest} />
+        ))}
         {/* <RestaurantCard
           restName="KFC"
           cuisineName="American, Fast-Food, Regional"
