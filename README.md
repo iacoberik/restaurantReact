@@ -16,3 +16,12 @@
 - Error Handling
 - HTTPs future
 - Tree Shaking - remove unused code
+
+# React hooks
+
+Normal JS utility function
+
+//Most important
+
+- useState() --- Superpowerfull State Variable in React
+- useEffect()
