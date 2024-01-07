@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import restaurantsApi from "../utils/mockdata";
 import { useState } from "react";
-import ButtonsFilter from "./ButtonsFilter";
+import ButtonDefault from "./ButtonDefault";
 
 const Body = () => {
   const [restaurantsList, setRestaurantsList] = useState(restaurantsApi);
@@ -39,16 +39,35 @@ const Body = () => {
     >
       <div className="search-container">
         <input
+          style={{
+            display: "block",
+            width: "100%",
+            height: "50px",
+            padding: "10px 20px",
+            fontSize: "28px",
+            borderRadius: "5px",
+            borderWidth: "1px",
+          }}
           type="text"
           placeholder="Search for Restaurants"
           onInput={searchSort}
         ></input>
       </div>
       <div className="filter" style={{ paddingTop: "40px" }}>
-        <ButtonsFilter
-          onHighRated={highRated}
-          onResetRated={resetRated}
-          onSortByRating={sortByRating}
+        <ButtonDefault
+          onClick={highRated}
+          buttonText="Top Rating"
+          btnClass="filter-btn"
+        />
+        <ButtonDefault
+          onClick={sortByRating}
+          buttonText="Sort By Rating"
+          btnClass="filter-btn"
+        />{" "}
+        <ButtonDefault
+          onClick={resetRated}
+          buttonText="Reset Filters"
+          btnClass="filter-btn"
         />
       </div>
       <div className="restaurants-container" style={{ paddingBlock: "40px" }}>
