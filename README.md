@@ -1,5 +1,3 @@
-# Namaste react
-
 # Parcel
 
 - Dev build

@@ -60,41 +60,11 @@ img.logo {
 .restaurants-container {
     display: flex;
     flex-wrap: wrap;
-    /* grid-template-columns: repeat(6, 1fr); */
     align-items: center;
     justify-content: center;
     gap: 20px;
     padding-top: 60px;
 }
-
-/* @media (max-width: 1440px) {
-    .restaurants-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 730px) {
-    .restaurants-container {
-        grid-template-columns: 1fr
-    }
-} */
-
-/* .restaurant-card {
-    aspect-ratio: 14 / 16;
-    border-radius: 10px;
-    flex-direction: column;
-    max-height: 375px;
-    margin-top: 20px;
-    padding: 10px 15px;
-    transition: all .2s ease-in-out;
-    display: flex;
-    box-shadow: 0 2px 4px #0e1e251f, 0 2px 16px #0e1e2552;
-    margin-inline: auto;
-} */
-
-/* .restaurant-card:hover {
-    box-shadow: rgba(14, 30, 37, 0.24) 0px 2px 6px 0px, rgba(14, 30, 37, 0.42) 0px 2px 20px 0px;
-} */
 
 .restaurant-details {
     margin-top: auto;
