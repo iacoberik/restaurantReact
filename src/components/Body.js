@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ButtonDefault from "./ButtonDefault";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
@@ -67,7 +68,7 @@ const Body = () => {
   //   );
 
   return restaurantsList.length === 0 ? (
-    <h2>Loading...</h2>
+    <Shimmer />
   ) : (
     <div
       className="body-container"
