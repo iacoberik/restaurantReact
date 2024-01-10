@@ -2,6 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ButtonDefault from "./ButtonDefault";
 import Shimmer from "./Shimmer";
+import { SWIGGY_REST_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
@@ -23,16 +25,18 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.612912&lng=77.2295097&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const resp = await data.json();
-    const restaurantsData =
-      resp?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    console.log(restaurantsData);
-    setRestaurantsList(restaurantsData);
-    setFilteredRestaurants(restaurantsData);
+    try {
+      const data = await fetch(SWIGGY_REST_API);
+      const resp = await data.json();
+      const restaurantsData =
+        resp?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+      setRestaurantsList(restaurantsData);
+      setFilteredRestaurants(restaurantsData);
+      console.log(resp);
+    } catch (error) {
+      console.log(`Error fetching: ${error}`);
+    }
   };
 
   function highRated() {
@@ -55,17 +59,7 @@ const Body = () => {
     setFilteredRestaurants(filteredRest);
   }
 
-  console.log("RENDERE");
-
   const resetRated = () => setFilteredRestaurants(restaurantsList);
-
-  // CONDITIONAL RENDERING
-  // if (restaurantsList.length === 0)
-  //   return (
-  //     <>
-  //       <h2>Loading...</h2>
-  //     </>
-  //   );
 
   return restaurantsList.length === 0 ? (
     <Shimmer />
@@ -105,7 +99,9 @@ const Body = () => {
       </div>
       <div className="restaurants-container" style={{ paddingBlock: "40px" }}>
         {filteredRestaurants.map((rest) => (
-          <RestaurantCard key={rest.info.id} restOptions={rest} />
+          <Link key={rest.info.id} to={"/restaurant/" + rest.info.id}>
+            <RestaurantCard restOptions={rest} />
+          </Link>
         ))}
       </div>
     </div>

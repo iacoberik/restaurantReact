@@ -5,8 +5,14 @@
     scroll-behavior: smooth
 }
 
+.nav-item_link a, a {
+    text-decoration: unset;
+    color: inherit;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
+    overflow-y: auto;
 }
 
 ul {
