@@ -2,13 +2,19 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ButtonDefault from "./ButtonDefault";
 import Shimmer from "./Shimmer";
-import { SWIGGY_REST_API } from "../utils/constants";
+import useRestaurants from "../utils/useRestaurants";
 import { Link } from "react-router-dom";
 
 const Body = () => {
-  const [restaurantsList, setRestaurantsList] = useState([]);
+  const [restaurantsList] = useRestaurants();
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    setFilteredRestaurants(restaurantsList);
+  }, [restaurantsList]);
+
+  if (restaurantsList.length === 0) return <Shimmer />;
 
   const inputStyle = {
     display: "block",
@@ -20,24 +26,12 @@ const Body = () => {
     borderWidth: "1px",
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const data = await fetch(SWIGGY_REST_API);
-      const resp = await data.json();
-      const restaurantsData =
-        resp?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-      setRestaurantsList(restaurantsData);
-      setFilteredRestaurants(restaurantsData);
-      console.log(resp);
-    } catch (error) {
-      console.log(`Error fetching: ${error}`);
-    }
-  };
+  function searchSort(query) {
+    const filteredRest = restaurantsList.filter((rest) =>
+      rest.info.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredRestaurants(filteredRest);
+  }
 
   function highRated() {
     const filteredRest = restaurantsList.filter(
@@ -52,18 +46,9 @@ const Body = () => {
     setFilteredRestaurants(sortedList);
   }
 
-  function searchSort(query) {
-    const filteredRest = restaurantsList.filter((rest) =>
-      rest.info.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredRestaurants(filteredRest);
-  }
-
   const resetRated = () => setFilteredRestaurants(restaurantsList);
 
-  return restaurantsList.length === 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <div
       className="body-container"
       style={{ maxWidth: "1440px", margin: "auto" }}

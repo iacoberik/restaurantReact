@@ -4,6 +4,7 @@ import logo from "../img/header_logo.png";
 import ButtonDefault from "./ButtonDefault";
 
 const Header = () => {
+  console.log("HEADER CALLED");
   const [logText, setLogText] = useState("Login");
 
   //If the dependency array from useEffect is not used, i will render every time the component will render after it mounts
@@ -13,15 +14,13 @@ const Header = () => {
   //If the dependency array has value like [logText], it will be called after the component render every time the value of it changes
 
   useEffect(() => {
-    console.log("useEffect called");
+    console.log("HEADER useEffect called");
   }, []);
-
-  console.log("HEADER RENDERED");
 
   const logged = () => {
     logText === "Login" ? setLogText("Logout") : setLogText("Login");
   };
-
+  console.log("HEADER Rendered");
   return (
     <div className="header">
       <div className="pane--inner">
