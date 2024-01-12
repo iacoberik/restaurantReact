@@ -2,11 +2,11 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ButtonDefault from "./ButtonDefault";
 import Shimmer from "./Shimmer";
-import useRestaurants from "../utils/useRestaurants";
+import useFecthRestaurants from "../utils/useFecthRestaurants";
 import { Link } from "react-router-dom";
 
 const Body = () => {
-  const [restaurantsList] = useRestaurants();
+  const [restaurantsList] = useFecthRestaurants();
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
