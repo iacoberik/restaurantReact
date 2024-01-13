@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/header_logo.png";
 import ButtonDefault from "./ButtonDefault";
+import useInternetStatus from "../utils/useInternetStatus";
 
 const Header = () => {
   console.log("HEADER CALLED");
   const [logText, setLogText] = useState("Login");
+  const onlineStatuss = useInternetStatus();
 
   //If the dependency array from useEffect is not used, i will render every time the component will render after it mounts
 
@@ -20,7 +22,7 @@ const Header = () => {
   const logged = () => {
     logText === "Login" ? setLogText("Logout") : setLogText("Login");
   };
-  console.log("HEADER Rendered");
+  console.log("HEADER until Rendered");
   return (
     <div className="header">
       <div className="pane--inner">
@@ -30,6 +32,9 @@ const Header = () => {
           </div>
           <div className="nav-items">
             <ul>
+              <li className="nav-item_status">
+                Status: {onlineStatuss ? "Online 🟢" : "Offline 🔴"}
+              </li>
               <li className="nav-item_link">
                 <Link to="/">Home</Link>
               </li>

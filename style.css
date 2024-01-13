@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     margin: 0;
     padding: 0;
@@ -57,7 +61,13 @@ img.logo {
     font-weight: 500;
 }
 
-.nav-items ul li::after {
+.nav-items .nav-item_status {
+    background-color: #f2f2f2;
+    padding-inline: 25px;
+    border-radius: 10px;
+}
+
+.nav-items ul li.nav-item_link::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -69,7 +79,24 @@ img.logo {
     transform: scale(0)
 }
 
-.nav-items ul li:hover::after {
+button {
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 0px 4px 0 #0e1e251f,
+            0 2px 4px 0 #0e1e2552;
+}
+
+button:hover {
+    box-shadow: 0 0px 4px 1px #0e1e251f,
+        0 2px 4px 1px #0e1e2552;
+}
+
+button:active {
+    transition: none;
+    box-shadow: unset;
+       
+}
+
+.nav-items ul li.nav-item_link:hover::after {
     transform: unset;
 }
 
@@ -91,4 +118,14 @@ img.logo {
     font-weight: 500;
     font-style: italic;
     padding-block: 60px 20px;
+}
+
+label.card-promoted {
+    position: absolute;
+    background-color: black;
+    z-index: 2;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-style: italic;
 }

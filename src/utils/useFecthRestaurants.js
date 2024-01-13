@@ -12,8 +12,9 @@ const useFecthRestaurants = () => {
       const data = await fetch(SWIGGY_REST_API);
       const resp = await data.json();
       const restaurantsData =
-        resp?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        resp?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
+      console.log(restaurantsData);
       setRestaurants(restaurantsData);
     } catch {}
   };

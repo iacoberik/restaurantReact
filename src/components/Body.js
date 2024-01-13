@@ -1,20 +1,24 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { promotedRestaurantCard } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ButtonDefault from "./ButtonDefault";
 import Shimmer from "./Shimmer";
 import useFecthRestaurants from "../utils/useFecthRestaurants";
 import { Link } from "react-router-dom";
+import useInternetStatus from "../utils/useInternetStatus";
 
 const Body = () => {
+  console.log("Body called");
   const [restaurantsList] = useFecthRestaurants();
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const onlineStatus = useInternetStatus();
+  const PromotedRestaurant = promotedRestaurantCard(RestaurantCard);
 
   useEffect(() => {
     setFilteredRestaurants(restaurantsList);
+    console.log("Body call from useEffect");
+    console.log(restaurantsList);
   }, [restaurantsList]);
-
-  if (restaurantsList.length === 0) return <Shimmer />;
 
   const inputStyle = {
     display: "block",
@@ -47,8 +51,12 @@ const Body = () => {
   }
 
   const resetRated = () => setFilteredRestaurants(restaurantsList);
+  console.log("Body until render");
+  if (!onlineStatus) return <h1>Please check your internet conection</h1>;
 
-  return (
+  return restaurantsList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div
       className="body-container"
       style={{ maxWidth: "1440px", margin: "auto" }}
@@ -85,7 +93,11 @@ const Body = () => {
       <div className="restaurants-container" style={{ paddingBlock: "40px" }}>
         {filteredRestaurants.map((rest) => (
           <Link key={rest.info.id} to={"/restaurant/" + rest.info.id}>
-            <RestaurantCard restOptions={rest} />
+            {rest.info.avgRating >= 4.3 ? (
+              <PromotedRestaurant restOptions={rest} />
+            ) : (
+              <RestaurantCard restOptions={rest} />
+            )}
           </Link>
         ))}
       </div>
