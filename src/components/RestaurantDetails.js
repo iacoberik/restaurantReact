@@ -8,6 +8,8 @@ const RestaurantDetails = () => {
   const { id: resId } = useParams();
   const [showIndex, setShowIndex] = useState(0);
 
+  const dummyData = "dummyData";
+
   const menuData = useFetchMenu(resId);
   const menuCategories =
     menuData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
@@ -45,7 +47,7 @@ const RestaurantDetails = () => {
               data={category}
               showItems={index === showIndex && true}
               setShowIndex={() => {
-                setShowIndex(index);
+                showIndex === index ? setShowIndex(-1) : setShowIndex(index);
               }}
             />
           </div>
