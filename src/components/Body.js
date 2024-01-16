@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import useInternetStatus from "../utils/useInternetStatus";
 
 const Body = () => {
-  console.log("Body called");
   const [restaurantsList] = useFecthRestaurants();
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,8 +15,6 @@ const Body = () => {
 
   useEffect(() => {
     setFilteredRestaurants(restaurantsList);
-    console.log("Body call from useEffect");
-    console.log(restaurantsList);
   }, [restaurantsList]);
 
   const inputStyle = {
@@ -51,7 +48,7 @@ const Body = () => {
   }
 
   const resetRated = () => setFilteredRestaurants(restaurantsList);
-  console.log("Body until render");
+
   if (!onlineStatus) return <h1>Please check your internet conection</h1>;
 
   return restaurantsList.length === 0 ? (

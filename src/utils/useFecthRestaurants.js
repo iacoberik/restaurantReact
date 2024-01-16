@@ -14,7 +14,6 @@ const useFecthRestaurants = () => {
       const restaurantsData =
         resp?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-      console.log(restaurantsData);
       setRestaurants(restaurantsData);
     } catch {}
   };

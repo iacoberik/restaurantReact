@@ -5,7 +5,6 @@ import ButtonDefault from "./ButtonDefault";
 import useInternetStatus from "../utils/useInternetStatus";
 
 const Header = () => {
-  console.log("HEADER CALLED");
   const [logText, setLogText] = useState("Login");
   const onlineStatuss = useInternetStatus();
 
@@ -14,15 +13,10 @@ const Header = () => {
   //If the dependency array is empty, it will render only one time after the component will mount.(only on initial render)
 
   //If the dependency array has value like [logText], it will be called after the component render every time the value of it changes
-
-  useEffect(() => {
-    console.log("HEADER useEffect called");
-  }, []);
-
   const logged = () => {
     logText === "Login" ? setLogText("Logout") : setLogText("Login");
   };
-  console.log("HEADER until Rendered");
+
   return (
     <div className="header">
       <div className="pane--inner">
