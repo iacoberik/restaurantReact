@@ -1,11 +1,17 @@
+import { useContext, useEffect } from "react";
+import UserContext from "../utils/UserContext";
+
 const About = () => {
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
   return (
     <div className="about-page">
-      <h1>Welcome to [Your Website Name]</h1>
+      <h1>Welcome to [{loggedInUser}]</h1>
       <p>
         Your ultimate destination for culinary delights and gastronomic
         adventures!
       </p>
+      <button onClick={() => setUserName("ANDREI")}>asd</button>
 
       <section className="mission-section">
         <h2>Our Mission</h2>

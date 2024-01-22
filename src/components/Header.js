@@ -9,7 +9,7 @@ const Header = () => {
   const [logText, setLogText] = useState("Login");
   const onlineStatuss = useInternetStatus();
 
-  const { loggedInUsor } = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
 
   //If the dependency array from useEffect is not used, i will render every time the component will render after it mounts
 
@@ -43,7 +43,7 @@ const Header = () => {
               </li>
               <li className="nav-item_link">Cart</li>
               <ButtonDefault onClick={logged} buttonText={logText} />
-              {logText === "Logout" && <li>{loggedInUsor}</li>}
+              {logText === "Logout" && <li>{loggedInUser}</li>}
             </ul>
           </div>
         </div>
