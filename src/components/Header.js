@@ -11,13 +11,11 @@ const Header = () => {
   const onlineStatuss = useInternetStatus();
 
   const { loggedInUser } = useContext(UserContext);
+
   const cartItems = useSelector((store) => store.cart.items);
-  const cartsItems = useSelector((store) => store.carts.i);
 
   //If the dependency array from useEffect is not used, i will render every time the component will render after it mounts
-
   //If the dependency array is empty, it will render only one time after the component will mount.(only on initial render)
-
   //If the dependency array has value like [logText], it will be called after the component render every time the value of it changes
 
   const logged = () => {
@@ -46,7 +44,9 @@ const Header = () => {
                 <Link to="/Contact">Contact</Link>
               </li>
               <li className="nav-item_link">
-                Cart {cartItems.length} | {cartsItems.length}
+                <Link to="/Cart">
+                  Cart {cartItems.length > 0 && `(${cartItems.length})`}
+                </Link>
               </li>
               <ButtonDefault onClick={logged} buttonText={logText} />
               {logText === "Logout" && <li>{loggedInUser}</li>}

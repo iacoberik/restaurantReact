@@ -5,11 +5,12 @@ import Body from "./components/Body";
 import { lazy } from "react";
 import Contact from "./components/Contact";
 import RestaurantDetails from "./components/RestaurantDetails";
+import Cart from "./components/Cart";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import appStorageData from "./utils/appStorageData";
 import { Provider } from "react-redux";
-import appStore from "./utils/appStore";
 
 const About = lazy(() => import("./components/About"));
 
@@ -26,7 +27,7 @@ const AppLayout = () => {
 
   return (
     <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <Provider store={appStore}>
+      <Provider store={appStorageData}>
         <div className="app">
           <Header />
           <div className="pane--inner">
@@ -60,6 +61,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantDetails />,
+      },
+      {
+        path: "/Cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

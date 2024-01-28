@@ -4,18 +4,25 @@ import { useContext, useRef } from "react";
 
 const RestaurantMenu = ({ data, showItems, setShowIndex }) => {
   const myRef = useRef(null);
+  const handleScroll = () => {
+    const offSetValue = 150;
+    const element = myRef.current;
 
-  // const { loggedInUsor } = useContext(UserContext);
-
-  const executeScroll = () => {
-    myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offSetValue,
+        behavior: "smooth",
+      });
+    }
   };
 
   const handelClick = () => {
     setShowIndex();
     setTimeout(() => {
-      executeScroll();
-    }, 500);
+      handleScroll();
+    }, 100);
   };
 
   return (
