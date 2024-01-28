@@ -25,3 +25,12 @@ Normal JS utility function
 
 - useState() --- Superpowerfull State Variable in React
 - useEffect()
+
+# Redux Toolkit
+
+-Install Redux Toolkit (@reduxjs/toolkit)and react-redux
+-Build our Store
+-Connect our store to our app
+-Slice (cardSlice)
+-dispatch(action)
+-Reading data with SELECTOR

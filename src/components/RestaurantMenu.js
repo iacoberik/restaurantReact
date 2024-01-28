@@ -15,7 +15,7 @@ const RestaurantMenu = ({ data, showItems, setShowIndex }) => {
     setShowIndex();
     setTimeout(() => {
       executeScroll();
-    }, 0);
+    }, 500);
   };
 
   return (
