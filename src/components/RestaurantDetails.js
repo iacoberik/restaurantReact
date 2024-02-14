@@ -7,9 +7,6 @@ import RestaurantMenu from "./RestaurantMenu";
 const RestaurantDetails = () => {
   const { id: resId } = useParams();
   const [showIndex, setShowIndex] = useState(0);
-
-  const dummyData = "dummyData";
-
   const menuData = useFetchMenu(resId);
   const menuCategories =
     menuData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
