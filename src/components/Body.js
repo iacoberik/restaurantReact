@@ -14,7 +14,7 @@ const Body = () => {
   const { userName, setUserName } = useContext(UserContext);
   const onlineStatus = useInternetStatus();
   const PromotedRestaurant = promotedRestaurantCard(RestaurantCard);
-  console.log(useContext(UserContext));
+  // console.log(useContext(UserContext));
   useEffect(() => {
     setFilteredRestaurants(restaurantsList);
   }, [restaurantsList]);

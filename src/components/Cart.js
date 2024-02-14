@@ -6,7 +6,7 @@ const Cart = () => {
   const handleClearCart = () => dispatch(clearCart());
 
   const cartItems = useSelector((store) => store?.cart.items);
-  const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+  // const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
   console.log(cartItems);
 
   return cartItems.length > 0 ? (
@@ -43,7 +43,10 @@ const Cart = () => {
           );
         })}
       </div>
-      <div className="total text-end">Total order: {totalPrice / 100} $</div>
+      <div className="total text-end">
+        Total order:{" "}
+        {cartItems.reduce((total, item) => total + item.price, 0) / 100} $
+      </div>
     </>
   ) : (
     <h2 className="text-2xl font-medium text-center">Cart is empty...</h2>
