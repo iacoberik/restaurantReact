@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import RestaurantDetails from "./components/RestaurantDetails";
 import Cart from "./components/Cart";
 import Error from "./components/Error";
+//
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
 import appStorageData from "./utils/appStorageData";
@@ -15,15 +16,15 @@ import { Provider } from "react-redux";
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
-  const [userName, setUserName] = useState();
+  const [userName, setUserName] = useState("Default User");
 
-  useEffect(() => {
-    const data = {
-      name: "erik",
-    };
+  // useEffect(() => {
+  //   const data = {
+  //     name: "erik",
+  //   };
 
-    setUserName(data.name);
-  }, []);
+  //   setUserName(data.name);
+  // }, []);
 
   return (
     <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>

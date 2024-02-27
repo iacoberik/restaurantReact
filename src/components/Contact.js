@@ -1,5 +1,10 @@
 const Contact = () => {
-  return <div>Contant page here</div>;
+  return (
+    <div>
+      <h2>Contant page here</h2>
+      <button>Test</button>
+    </div>
+  );
 };
 
 export default Contact;

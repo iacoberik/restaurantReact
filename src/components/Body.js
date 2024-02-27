@@ -90,6 +90,7 @@ const Body = () => {
         />
       </div>
       <div className="user-input_name mt-4">
+        <label className="mx-2">Username</label>
         <input
           className="shadow-md rounded-md border h-10 inline-block"
           type="text"
